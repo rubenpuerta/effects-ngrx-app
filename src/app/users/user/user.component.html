@@ -1,1 +1,22 @@
-<p>user works!</p>
+<ng-container *ngIf="loadingStatus">
+  <div *ngIf="loadingStatus === 'LOADING'; else showUser">
+    <app-loading></app-loading>
+  </div>
+  <ng-template #showUser>
+    <ng-container *ngIf="!error">
+      <div class="row">
+        <div class="col-3">
+          <img [src]="myUser.avatar" [alt]="user.first_name" />
+        </div>
+      </div>
+      <ul class="list-group">
+        <li class="list-group-item">
+          Name: {{ myUser.first_name }} {{ myUser.last_name }}
+        </li>
+        <li class="list-group-item">email: {{ myUser.email }}</li>
+        <li class="list-group-item">Id: {{ myUser.id }}</li>
+      </ul>
+    </ng-container>
+  </ng-template>
+</ng-container>
+<app-error [errorInfo]="error"></app-error>

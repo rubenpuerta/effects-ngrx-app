@@ -1,10 +1,18 @@
-<div class="card-columns" *ngIf="users">
-  <div class="card" *ngFor="let user of users">
-    <img [src]="user.avatar" class="card-img-top" [alt]="user.first_name" />
-    <div class="card-body">
-      <span class="card-text">Id: {{ user.id }}</span>
-      <h5 class="card-title">{{ user.first_name }} {{ user.last_name }}</h5>
-      <p class="card-text">{{ user.email }}</p>
-    </div>
+<ng-container *ngIf="loadingStatus$ | async as status">
+  <div *ngIf="status === 'LOADING'; else showUsers">
+    <app-loading></app-loading>
   </div>
-</div>
+  <ng-template #showUsers>
+    <div class="card-columns">
+      <div class="card" *ngFor="let user of users$ | async">
+        <img [src]="user.avatar" class="card-img-top" [alt]="user.first_name" />
+        <div class="card-body">
+          <span class="card-text">Id: {{ user.id }}</span>
+          <h5 class="card-title">{{ user.first_name }} {{ user.last_name }}</h5>
+          <p class="card-text">{{ user.email }}</p>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</ng-container>
+<app-error [errorInfo]="error$ | async"></app-error>

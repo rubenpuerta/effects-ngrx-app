@@ -10,14 +10,19 @@
     "module": "esnext",
     "moduleResolution": "node",
     "importHelpers": true,
+    "paths": {
+      "@services/*": ["src/app/services/*"],
+      "@state/*": ["src/app/store/*"],
+      "@actions/*": ["src/app/store/actions/*"],
+      "@selectors/*": ["src/app/store/selectors/*"],
+      "@effects/*": ["src/app/store/effects/*"],
+      "@reducers/*": ["src/app/store/reducers/*"],
+      "@models/*": ["src/app/models/*"],
+      "@interfaces/*": ["src/app/interfaces/*"]
+    },
     "target": "es2015",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2018",
-      "dom"
-    ]
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2018", "dom"]
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
