@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Deployed
 
-https://rubenpuerta.gitlab.io/effects-ngrx-app/home
+https://rubenpuerta.gitlab.io/effects-ngrx-app
 
 ## Development server
 
